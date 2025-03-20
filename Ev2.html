@@ -1,0 +1,432 @@
+<!DOCTYPE html> 
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechZone</title>
+    <link rel="shortcut icon" href="img/lodo de TECHZONE.webp" type="image/x-icon">
+    <link rel="stylesheet" href="Css/estilos.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            margin: 0;
+            font-weight: 700;
+        }
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
+        a:hover {
+            color: #ffc107;
+        }
+        header {
+            background: #1a1a1a;
+            color: white;
+            padding: 20px;
+        }
+        nav {
+            text-align: center;
+        }
+        nav a {
+            margin: 0 20px;
+            font-size: 18px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 10px;
+            background-color: #333;
+            border-radius: 30px;
+            transition: background-color 0.3s ease;
+        }
+        nav a:hover {
+            background-color: #ff6f00;
+        }
+        .textos-header {
+            text-align: center;
+            margin-top: 50px;
+        }
+        .textos-header h1 {
+            font-size: 48px;
+            color: #ff6f00;
+        }
+        .textos-header h5 {
+            font-size: 22px;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+        .carrusel {
+            width: 100%;
+            max-width: 600px;
+            margin: 40px auto;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .carrusel-images {
+            display: flex;
+            transition: transform 1s ease-in-out;
+        }
+        .carrusel-images img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .section-nosotros {
+            padding: 50px 20px;
+            text-align: center;
+            background-color: #fff;
+        }
+        .section-nosotros h2 {
+            font-size: 36px;
+            color: #ff6f00;
+            margin-bottom: 20px;
+        }
+        .contenedor-nosotros {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .contenido-textos p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 10px;
+        }
+        .Productos {
+            background-color: #fafafa;
+            padding: 50px 20px;
+        }
+        .titulo {
+            font-size: 36px;
+            text-align: center;
+            color: #ff6f00;
+            margin-bottom: 30px;
+        }
+        .galeria-pro {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .imagen-pro {
+            position: relative;
+            width: 30%;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .imagen-pro img {
+            width: 100%;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+        .imagen-pro:hover img {
+            transform: scale(1.1);
+        }
+        .hover-galeria {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .imagen-pro:hover .hover-galeria {
+            opacity: 1;
+        }
+        .Contacto {
+            background-color: #fff;
+            padding: 50px 20px;
+            text-align: center;
+        }
+        .contenedor-contacto h2 {
+            font-size: 36px;
+            color: #ff6f00;
+            margin-bottom: 20px;
+        }
+        .formulario-contacto {
+            max-width: 500px;
+            margin: 0 auto;
+            background: #f1f1f1;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .formulario-contacto input, .formulario-contacto textarea, .formulario-contacto button {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            background: #f7f7f7;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .formulario-contacto button {
+            background-color: #ff6f00;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .formulario-contacto button:hover {
+            background-color: #ff9100;
+        }
+        footer {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        footer .content-foo {
+            margin-bottom: 20px;
+        }
+        footer .content-foo h4, footer .content-foo h5 {
+            font-size: 18px;
+        }
+        footer .titulo-final {
+            font-size: 18px;
+            color: #ff6f00;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="inicio.html">Inicio</a>
+            <a href="nosotros.html">Nosotros</a>
+            <a href="productos.html">Productos</a>
+            <a href="contacto.html">Contacto</a>
+        </nav>
+        <section class="textos-header">
+            <h1>TECHZONE</h1>
+            <h5>Innovación y tecnología al alcance de todos</h5>
+            <div class="carrusel">
+                <div class="carrusel-images">
+                    <img src="img/laptop.jpg" alt="Laptop">
+                    <img src="img/audífonos.webp" alt="Audífonos">
+                    <img src="img/Smartphones.webp" alt="Smartphones">
+                </div>
+            </div>
+        </section>
+    </header>
+    <main>
+        <section class="section-nosotros">
+            <h2 class="titulo">Sobre Nosotros</h2>
+            <div class="contenedor-nosotros">
+                <div class="contenido-textos">
+                    <p>Somos una empresa líder en tecnología, ofreciendo los mejores dispositivos y accesorios electrónicos para todos los apasionados de la innovación.</p>
+                    <p>Contamos con una gran variedad de productos de última generación, con precios competitivos y una garantía de calidad excepcional.</p>
+                </div>
+            </div>
+        </section>
+        <section class="Productos">
+            <h2 class="titulo">Nuestros Productos</h2>
+            <div class="galeria-pro">
+                <div class="imagen-pro">
+                    <img src="img/laptop.jpg" alt="">
+                    <div class="hover-galeria">Laptops</div>
+                </div>
+                <div class="imagen-pro">
+                    <img src="img/audífonos.webp" alt="">
+                    <div class="hover-galeria">Audífonos</div>
+                </div>
+                <div class="imagen-pro">
+                    <img src="img/Smartphones.webp" alt="">
+                    <div class="hover-galeria">Smartphones</div>
+                </div>
+            </div>
+        </section>
+        <section class="Contacto">
+            <div class="contenedor-contacto">
+                <h2>Contáctanos</h2>
+                <div class="formulario-contacto">
+                    <h2>Envíanos un mensaje</h2>
+                    <form action="#" method="post">
+                        <input type="text" id="nombre" name="nombre" placeholder="Tu Nombre" required>
+                        <input type="email" id="email" name="email" placeholder="Correo Electrónico" required>
+                        <textarea id="mensaje" name="mensaje" placeholder="Tu mensaje..." rows="5" required></textarea>
+                        <button type="submit">Enviar</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="content-foo">
+            <h4>Email</h4>
+            <p>techzone@gmail.com</p>
+            <h5>Teléfono</h5>
+            <p>8118659881</p>
+        </div>
+        <h2 class="titulo-final">&copy; TechZone | Innovación para todos</h2>
+    </footer>
+
+    <script>
+        let currentIndex = 0;
+        const images = document.querySelectorAll('.carrusel-images img');
+        const totalImages = images.length;
+
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % totalImages;
+            const newTransform = -currentIndex * 100 + '%';
+            document.querySelector('.carrusel-images').style.transform = `translateX(${newTransform})`;
+        }, 3000);
+    </script>
+    
+    <script>
+        // Navegación suave para los enlaces del menú
+        const navLinks = document.querySelectorAll('nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(0);
+                const targetSection = document.querySelector(targetId);
+                window.scrollTo({
+                    top: targetSection.offsetTop - 50,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Interacción con tarjetas de productos
+        const productCards = document.querySelectorAll('.imagen-pro');
+        productCards.forEach(card => {
+            card.addEventListener('click', function() {
+                const productName = this.querySelector('.hover-galeria').textContent;
+                alert(`Más información sobre ${productName}`);
+            });
+        });
+
+        // Manejo del formulario de contacto
+        const contactForm = document.querySelector('.formulario-contacto form');
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('nombre').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('mensaje').value;
+            alert(`Gracias por contactarnos, ${name}! Te responderemos a ${email}`);
+            contactForm.reset();
+        });
+
+        // Sistema de testimonios rotatorios
+        const testimonials = [
+            'Excelente servicio y productos tecnológicos!', 
+            'Encontré todo lo que necesitaba para mi setup', 
+            'Precios competitivos y envío rápido',
+            'El mejor lugar para comprar tecnología'
+        ];
+        let currentTestimonial = 0;
+
+        function showTestimonial() {
+            const testimonialElement = document.createElement('p');
+            testimonialElement.textContent = testimonials[currentTestimonial];
+            testimonialElement.classList.add('testimonial');
+            
+            // Verificamos si ya existe la sección de testimonios, si no, la creamos
+            let testimonialSection = document.querySelector('.testimonios');
+            if (!testimonialSection) {
+                testimonialSection = document.createElement('div');
+                testimonialSection.classList.add('testimonios');
+                testimonialSection.style.textAlign = 'center';
+                testimonialSection.style.padding = '20px';
+                testimonialSection.style.backgroundColor = '#f1f1f1';
+                testimonialSection.style.margin = '20px 0';
+                
+                const heading = document.createElement('h2');
+                heading.textContent = 'Lo que dicen nuestros clientes';
+                heading.classList.add('titulo');
+                
+                testimonialSection.appendChild(heading);
+                document.querySelector('.section-nosotros').after(testimonialSection);
+            }
+            
+            // Eliminamos testimonios anteriores
+            const oldTestimonial = testimonialSection.querySelector('.testimonial');
+            if (oldTestimonial) {
+                oldTestimonial.remove();
+            }
+            
+            testimonialSection.appendChild(testimonialElement);
+            
+            // Cambiar al siguiente testimonio
+            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+            
+            setTimeout(() => {
+                showTestimonial();
+            }, 3000);
+        }
+
+        // Mejorar el carrusel existente con controles
+        function enhanceCarousel() {
+            const carrusel = document.querySelector('.carrusel');
+            const images = document.querySelectorAll('.carrusel-images img');
+            
+            // Añadir botones de navegación
+            const prevBtn = document.createElement('button');
+            prevBtn.innerHTML = '&#10094;';
+            prevBtn.classList.add('carousel-control', 'prev');
+            
+            const nextBtn = document.createElement('button');
+            nextBtn.innerHTML = '&#10095;';
+            nextBtn.classList.add('carousel-control', 'next');
+            
+            // Estilos para los botones
+            const btnStyle = `
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                background: rgba(0,0,0,0.5);
+                color: white;
+                border: none;
+                padding: 10px 15px;
+                cursor: pointer;
+                font-size: 18px;
+                border-radius: 50%;
+            `;
+            
+            prevBtn.style.cssText = btnStyle + 'left: 10px;';
+            nextBtn.style.cssText = btnStyle + 'right: 10px;';
+            
+            function updateCarousel() {
+                const newTransform = -currentIndex * 100 + '%';
+                document.querySelector('.carrusel-images').style.transform = `translateX(${newTransform})`;
+            }
+            
+            prevBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+                updateCarousel();
+            });
+            
+            nextBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % totalImages;
+                updateCarousel();
+            });
+            
+            carrusel.style.position = 'relative';
+            carrusel.appendChild(prevBtn);
+            carrusel.appendChild(nextBtn);
+        }
+
+        // Iniciar funciones cuando el DOM esté cargado
+        document.addEventListener('DOMContentLoaded', function() {
+            showTestimonial();
+            enhanceCarousel();
+        });
+    </script>
+</body>
+</html>
