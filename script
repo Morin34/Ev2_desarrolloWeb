@@ -1,0 +1,140 @@
+    <script>
+        // Navegación suave para los enlaces del menú
+        const navLinks = document.querySelectorAll('nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(0);
+                const targetSection = document.querySelector(targetId);
+                window.scrollTo({
+                    top: targetSection.offsetTop - 50,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Interacción con tarjetas de productos
+        const productCards = document.querySelectorAll('.imagen-pro');
+        productCards.forEach(card => {
+            card.addEventListener('click', function() {
+                const productName = this.querySelector('.hover-galeria').textContent;
+                alert(`Más información sobre ${productName}`);
+            });
+        });
+
+        // Manejo del formulario de contacto
+        const contactForm = document.querySelector('.formulario-contacto form');
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('nombre').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('mensaje').value;
+            alert(`Gracias por contactarnos, ${name}! Te responderemos a ${email}`);
+            contactForm.reset();
+        });
+
+        // Sistema de testimonios rotatorios
+        const testimonials = [
+            'Excelente servicio y productos tecnológicos!', 
+            'Encontré todo lo que necesitaba para mi setup', 
+            'Precios competitivos y envío rápido',
+            'El mejor lugar para comprar tecnología'
+        ];
+        let currentTestimonial = 0;
+
+        function showTestimonial() {
+            const testimonialElement = document.createElement('p');
+            testimonialElement.textContent = testimonials[currentTestimonial];
+            testimonialElement.classList.add('testimonial');
+            
+            // Verificamos si ya existe la sección de testimonios, si no, la creamos
+            let testimonialSection = document.querySelector('.testimonios');
+            if (!testimonialSection) {
+                testimonialSection = document.createElement('div');
+                testimonialSection.classList.add('testimonios');
+                testimonialSection.style.textAlign = 'center';
+                testimonialSection.style.padding = '20px';
+                testimonialSection.style.backgroundColor = '#f1f1f1';
+                testimonialSection.style.margin = '20px 0';
+                
+                const heading = document.createElement('h2');
+                heading.textContent = 'Lo que dicen nuestros clientes';
+                heading.classList.add('titulo');
+                
+                testimonialSection.appendChild(heading);
+                document.querySelector('.section-nosotros').after(testimonialSection);
+            }
+            
+            // Eliminamos testimonios anteriores
+            const oldTestimonial = testimonialSection.querySelector('.testimonial');
+            if (oldTestimonial) {
+                oldTestimonial.remove();
+            }
+            
+            testimonialSection.appendChild(testimonialElement);
+            
+            // Cambiar al siguiente testimonio
+            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+            
+            setTimeout(() => {
+                showTestimonial();
+            }, 3000);
+        }
+
+        // Mejorar el carrusel existente con controles
+        function enhanceCarousel() {
+            const carrusel = document.querySelector('.carrusel');
+            const images = document.querySelectorAll('.carrusel-images img');
+            
+            // Añadir botones de navegación
+            const prevBtn = document.createElement('button');
+            prevBtn.innerHTML = '&#10094;';
+            prevBtn.classList.add('carousel-control', 'prev');
+            
+            const nextBtn = document.createElement('button');
+            nextBtn.innerHTML = '&#10095;';
+            nextBtn.classList.add('carousel-control', 'next');
+            
+            // Estilos para los botones
+            const btnStyle = `
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                background: rgba(0,0,0,0.5);
+                color: white;
+                border: none;
+                padding: 10px 15px;
+                cursor: pointer;
+                font-size: 18px;
+                border-radius: 50%;
+            `;
+            
+            prevBtn.style.cssText = btnStyle + 'left: 10px;';
+            nextBtn.style.cssText = btnStyle + 'right: 10px;';
+            
+            function updateCarousel() {
+                const newTransform = -currentIndex * 100 + '%';
+                document.querySelector('.carrusel-images').style.transform = `translateX(${newTransform})`;
+            }
+            
+            prevBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+                updateCarousel();
+            });
+            
+            nextBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % totalImages;
+                updateCarousel();
+            });
+            
+            carrusel.style.position = 'relative';
+            carrusel.appendChild(prevBtn);
+            carrusel.appendChild(nextBtn);
+        }
+
+        // Iniciar funciones cuando el DOM esté cargado
+        document.addEventListener('DOMContentLoaded', function() {
+            showTestimonial();
+            enhanceCarousel();
+        });
+    </script>
